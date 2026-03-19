@@ -43,7 +43,7 @@ fn deserialize_hex<T: Decodable>(hex: &str) -> Result<T> {
     let object = Decodable::consensus_decode(&mut reader)?;
     if reader.read_u8().is_ok() {
         Ok(object)
-        // Ignore data consumption error for litecoin extension block mweb as it is not handled in rust-bitcoin (fork)
+        // Ignore data consumption error (inherited from litecoin fork; retained for doriancoin compatibility)
         // Err(Error::BitcoinSerialization(bitcoin::consensus::encode::Error::ParseFailed(
         //     "data not consumed entirely when explicitly deserializing",
         // )))
